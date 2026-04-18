@@ -22,3 +22,4 @@ class EntryResponse(BaseModel):
     content: str
     mood: Mood | None
     created_at: datetime
+    
