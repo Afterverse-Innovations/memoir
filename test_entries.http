@@ -1,0 +1,17 @@
+### Entry 1
+POST http://127.0.0.1:8000/entries
+Content-Type: application/json
+
+{
+  "content": "Testing memoir entry",
+  "mood": "happy"
+}
+
+### Entry 2
+POST http://127.0.0.1:8000/entries
+Content-Type: application/json
+
+{
+  "content": "Testing memoir entry with image",
+  "mood": "grateful"
+}
