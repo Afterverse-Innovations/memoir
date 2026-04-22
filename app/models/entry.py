@@ -21,5 +21,4 @@ class EntryResponse(BaseModel):
     id: UUID
     content: str
     mood: Mood | None
-    created_at: datetime
-    
+    created_at: datetime 
