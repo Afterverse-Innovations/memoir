@@ -31,4 +31,4 @@ class Entry(Base):
 
     deleted_at: Mapped[datetime | None] = mapped_column(
         nullable=True
-    )
+    ) 

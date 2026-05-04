@@ -17,7 +17,7 @@ config = context.config
 # Set DATABASE_URL from .env
 config.set_main_option(
     "sqlalchemy.url",
-    os.getenv("DATABASE_URL")
+    os.getenv("SYNC_DATABASE_URL")
 )
 
 # Logging setup
