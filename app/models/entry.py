@@ -1,25 +1,34 @@
-from pydantic import BaseModel
-from enum import Enum
+import uuid
 from datetime import datetime
-from uuid import UUID
+
+from sqlalchemy import String, Text
+from sqlalchemy.orm import Mapped, mapped_column
+
+from app.models.base import Base
 
 
-class Mood(str, Enum):
-    happy = "happy"
-    neutral = "neutral"
-    sad = "sad"
-    anxious = "anxious"
-    grateful = "grateful"
+class Entry(Base):
+    __tablename__ = "entries"
 
+    id: Mapped[uuid.UUID] = mapped_column(
+        primary_key=True,
+        default=uuid.uuid4
+    )
 
-class EntryCreate(BaseModel):
-    content: str
-    mood: Mood | None = None
+    content: Mapped[str] = mapped_column(
+        Text,
+        nullable=False
+    )
 
+    mood: Mapped[str | None] = mapped_column(
+        String(20),
+        nullable=True
+    )
 
-class EntryResponse(BaseModel):
-    id: UUID
-    content: str
-    mood: Mood | None
-    created_at: datetime
-    
+    created_at: Mapped[datetime] = mapped_column(
+        default=datetime.utcnow
+    )
+
+    deleted_at: Mapped[datetime | None] = mapped_column(
+        nullable=True
+    ) 
